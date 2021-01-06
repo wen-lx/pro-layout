@@ -1,14 +1,14 @@
 <template>
-  <div></div>
+  <div class="porvider"><slot></slot></div>
 </template>
 
 <script>
 export default {
-  props: ['i18nRender'],
+  // props: ['i18nRender'],
   provide () {
     const that = this
     return {
-      i18nRender: that.i18nRender
+      // i18nRender: that.i18nRender
       // contentWidth,
       // breadcrumbRender
     }
@@ -17,4 +17,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.porvider
+  height 100%
 </style>

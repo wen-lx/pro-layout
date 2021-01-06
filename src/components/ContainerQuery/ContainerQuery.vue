@@ -1,12 +1,15 @@
 <template>
   <ContainerQuery :query="MediaQueryEnum" @change="handleMediaQuery">
-
+    <slot></slot>
   </ContainerQuery>
 </template>
 
 <script>
 import { ContainerQuery } from 'vue-container-query'
 export default {
+  components: {
+    ContainerQuery
+  },
   data () {
     return {
       MediaQueryEnum: {

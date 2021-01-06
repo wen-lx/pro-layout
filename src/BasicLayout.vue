@@ -1,8 +1,8 @@
 <template>
   <!-- <ConfigProvider :i18nRender="i18nRender" :contentWidth="props.contentWidth" :breadcrumbRender="breadcrumbRender"> -->
-  <ConfigProvider :i18nRender="i18nRender">
+  <ConfigProvider>
     <ContainerQuery>
-
+      <Layout></Layout>
     </ContainerQuery>
   </ConfigProvider>
 </template>
@@ -10,21 +10,19 @@
 <script>
 import ContainerQuery from './components/ContainerQuery'
 import ConfigProvider from './components/ConfigProvider'
-import { i18nRender } from '../examples/src/locales';
+import Layout from './components/Layout'
 export default {
   props: ['setting'],
   components: {
     ContainerQuery,
-    ConfigProvider
+    ConfigProvider,
+    Layout
   },
   data () {
     return {
     }
   },
   computed: {
-    i18nRender () {
-      return this.$attrs.i18nRender
-    }
   },
   mounted () {
     // i18nRender = this.$attrs.i18nRender
@@ -33,5 +31,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import "./init.css"
 
 </style>

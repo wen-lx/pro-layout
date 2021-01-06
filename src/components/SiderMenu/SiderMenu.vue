@@ -1,44 +1,48 @@
 <template>
-<transition name="menu-fade-show">
-  <div id="layout" :class="{ collapse: isCollapse }">
-    <el-menu unique-opened :collapse="isCollapse" class="sideMenu">
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">导航一</span>
-        </template>
-        <el-menu-item index="1-1">选项1</el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
-      </el-submenu>
-      <el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-menu"></i>
-          <span slot="title">导航二</span>
-        </template>
-        <el-menu-item index="2-1">选项3</el-menu-item>
-        <el-menu-item index="2-2">选项4</el-menu-item>
-      </el-submenu>
-      <el-submenu index="3">
-        <template slot="title">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航三</span>
-        </template>
-      </el-submenu>
-    </el-menu>
-    <div id="fold">
-      <i style="font-size: 30px;cursor: pointer" @click="changeIsCollapse"
-        :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"></i>
+  <transition name="menu-fade-show">
+    <div v-show="isShow" id="layout" :class="{ collapse: isCollapse }">
+      <el-menu unique-opened :collapse="isCollapse" class="sideMenu">
+        <el-submenu index="1">
+          <template slot="title">
+            <i class="el-icon-location"></i>
+            <span slot="title">导航一</span>
+          </template>
+          <el-menu-item index="1-1">选项1</el-menu-item>
+          <el-menu-item index="1-2">选项2</el-menu-item>
+        </el-submenu>
+        <el-submenu index="2">
+          <template slot="title">
+            <i class="el-icon-menu"></i>
+            <span slot="title">导航二</span>
+          </template>
+          <el-menu-item index="2-1">选项3</el-menu-item>
+          <el-menu-item index="2-2">选项4</el-menu-item>
+        </el-submenu>
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-setting"></i>
+            <span slot="title">导航三</span>
+          </template>
+        </el-submenu>
+      </el-menu>
+      <div id="fold">
+        <i style="font-size: 30px;cursor: pointer" @click="changeIsCollapse"
+          :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"></i>
+      </div>
     </div>
-  </div>
-</transition>
+  </transition>
 </template>
 
 <script>
 export default {
   data () {
     return {
+      isShow: false,
       isCollapse: false
     }
+  },
+  mounted () {
+    this.isShow = true
   },
   methods: {
     changeIsCollapse () {
@@ -50,24 +54,25 @@ export default {
 
 <style lang="stylus" scoped>
 .menu-fade-show-enter-active
-  transition all 1s ease
+  transition all 0.4s ease
 .menu-fade-show-enter
   transform translateX(-100px)
   opacity 0
-// #layout
-//   width 200px
-//   height 100%
-//   position relative
-//   transition all 0.4s ease
-//   .sideMenu
-//     border-right none
-//     &:not(.el-menu--collapse)
-//       width $sideMenuWidth
-//   #fold
-//     position absolute
-//     bottom 0
-//     width 100%
-//     padding-bottom 20px
+#layout
+  height 100%
+  background-color #001529
+  color #fff
+  position relative
+  .sideMenu
+    border-right none
+    &:not(.el-menu--collapse)
+      width 200px
+  #fold
+    position absolute
+    bottom 0
+    width 100%
+    text-align center
+    padding-bottom 20px
 #layout >>>
   .el-menu
     background none

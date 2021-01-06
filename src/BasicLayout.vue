@@ -2,7 +2,7 @@
   <!-- <ConfigProvider :i18nRender="i18nRender" :contentWidth="props.contentWidth" :breadcrumbRender="breadcrumbRender"> -->
   <ConfigProvider>
     <ContainerQuery>
-      <Layout></Layout>
+      <Layout><slot></slot></Layout>
     </ContainerQuery>
   </ConfigProvider>
 </template>

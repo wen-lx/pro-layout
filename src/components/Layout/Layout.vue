@@ -6,6 +6,7 @@
       <div class="main">Main</div>
       <div class="footer">Footer</div>
     </div>
+    <div class="anywhere"><slot></slot></div>
   </div>
 </template>
 
@@ -34,4 +35,6 @@ export default {
       bottom 0
       width 100%
       background pink
+  .anywhere
+    position absolute
 </style>

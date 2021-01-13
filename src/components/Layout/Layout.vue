@@ -3,7 +3,7 @@
     <SiderMenu></SiderMenu>
     <div class="right">
       <div class="header">Header</div>
-      <div class="main">Main</div>
+      <div class="main"><router-view></router-view></div>
       <div class="footer">Footer</div>
     </div>
     <div class="anywhere"><slot></slot></div>

@@ -1,28 +1,14 @@
 <template>
   <transition name="menu-fade-show">
     <div v-show="isShow" id="layout" :class="{ collapse: isCollapse }">
-      <el-menu unique-opened :collapse="isCollapse" class="sideMenu">
-        <el-submenu index="1">
+      <el-menu :default-active="activePath" unique-opened router
+      :collapse="isCollapse" background-color="#001529" text-color="#ddd" class="sideMenu">
+        <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.index">
           <template slot="title">
-            <i class="el-icon-location"></i>
-            <span slot="title">导航一</span>
+            <i :class="menu.meta.icon"></i>
+            <span slot="title">{{menu.menuTitle}}</span>
           </template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-submenu>
-        <el-submenu index="2">
-          <template slot="title">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </template>
-          <el-menu-item index="2-1">选项3</el-menu-item>
-          <el-menu-item index="2-2">选项4</el-menu-item>
-        </el-submenu>
-        <el-submenu index="3">
-          <template slot="title">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航三</span>
-          </template>
+          <el-menu-item v-for="(item, index) in menu.menuItems" :key="index" :index="item.index" :style="{backgroundColor: activePath === item.index ? themeColor : '#001529'}">{{item.title}}</el-menu-item>
         </el-submenu>
       </el-menu>
       <div id="fold">
@@ -34,14 +20,24 @@
 </template>
 
 <script>
+import { getThemeColor } from '../../utils/dynamicTheme.js'
 export default {
+  inject: ['menus'],
   data () {
     return {
       isShow: false,
-      isCollapse: false
+      isCollapse: false,
+      activePath: '/',
+    }
+  },
+  watch: {
+    getThemeColor () {
+      console.log(5678)
+      return getThemeColor
     }
   },
   mounted () {
+    this.activePath = this.$route.path
     this.isShow = true
   },
   methods: {
@@ -81,33 +77,9 @@ export default {
   .el-submenu__title
     text-align left
     user-select none // 不可选中文本
-    color white !important
-    &:hover
-      background linear-gradient(to right, rgba(151,246,255, 0.4), rgba(151,246,255, 0))
-    i
-      color white
-  .el-menu-item
-    text-align left
-    user-select none // 不可选中文本
-    color white !important
-    padding-left 64px !important
-
-  // .el-menu--inline
-  //   background none
-  .el-menu-item:hover
-    background linear-gradient(to right, rgba(151,246,255, 0.4), rgba(151,246,255, 0))
-  .el-menu-item.is-active
-    background linear-gradient(to right, rgba(151,246,255, 0.4), rgba(151,246,255, 0))
-  .el-menu-item-group__title // 隐藏菜单分组显示
-    display none
-  // 设置垂直菜单样式
-  .el-menu--vertical
-    .el-menu
-      padding 0
+  .el-menu--inline
     .el-menu-item
-      background #11AFAF
-    .el-menu-item:hover
-      background #ED4264
-    .el-menu-item.is-active
-      background #c83660
+      text-align left
+      user-select none
+      color #fff
 </style>

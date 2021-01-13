@@ -1,11 +1,10 @@
 {
-  "name": "@element-ui-vue/pro-layout",
+  "name": "vue-pro-layout",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wen-lx/pro-layout"
   },
   "dependencies": {
     "core-js": "^3.6.5",

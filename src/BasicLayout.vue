@@ -18,6 +18,11 @@ export default {
     ConfigProvider,
     Layout
   },
+  provide () {
+    return {
+      menus: this.$attrs.menus
+    }
+  },
   data () {
     return {
     }
@@ -25,7 +30,7 @@ export default {
   computed: {
   },
   mounted () {
-    // i18nRender = this.$attrs.i18nRender
+    localStorage.setItem('themeColor', '#1890ff')
   }
 }
 </script>

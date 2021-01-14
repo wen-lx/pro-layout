@@ -12,8 +12,8 @@
         </div>
         <div>
           <p style="padding-bottom: 10px">Navigation Mode</p>
-          <span class="nav-mode" @click="changeNavMode('side')">side</span>
-          <span class="nav-mode" @click="changeNavMode('top')">top</span>
+          <span class="nav-mode" @click="changeNavMode('side')"><span style=""></span><span style=""></span></span>
+          <span class="nav-mode" @click="changeNavMode('top')"><span style="height"></span><span style=""></span></span>
         </div>
       </div>
     </el-drawer>
@@ -89,10 +89,10 @@ export default {
       height 20px
     .nav-mode
       margin-right 10px
-      width 40px
-      height 40px
+      width 60px
+      height 60px
       border-radius 4px
-      background-color #ededed
+      background-color #000
   >>> .el-drawer:focus
     outline none !important
   >>> .el-drawer.rtl

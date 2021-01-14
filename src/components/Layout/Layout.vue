@@ -1,7 +1,7 @@
 <template>
   <div class="container" :style="{display: navMode === 'side' ? 'flex' : 'block'}">
-    <SiderMenu v-if="navMode === 'side'"></SiderMenu>
-    <TopMenu v-else></TopMenu>
+    <SiderMenu v-if="navMode === 'side'" :themeColor="themeColor"></SiderMenu>
+    <TopMenu v-else :themeColor="themeColor"></TopMenu>
     <div :style="{paddingTop: navMode === 'side' ? '0' : '64px'}"><slot></slot></div>
     <!-- <setting-drawer></setting-drawer> -->
     <div class="setting">
@@ -10,15 +10,21 @@
         <div class="content">
           <span class="title">主题设置</span>
           <div>
-            <p style="padding-bottom: 10px">Theme color</p>
+            <p style="padding: 10px">Theme color</p>
             <span class="color-box" v-for="(item, index) in colorList" :key="index" :style="{backgroundColor: item.value}" @click="changeThemeColor(item.value)">
               <i class="el-icon-check" style="color: #fff;" v-show="themeColor === item.value"></i>
             </span>
           </div>
           <div>
-            <p style="padding-bottom: 10px">Navigation Mode</p>
-            <span class="nav-mode" @click="changeNavMode('side')">side</span>
-            <span class="nav-mode" @click="changeNavMode('top')">top</span>
+            <p style="padding: 10px">Navigation Mode</p>
+            <span class="nav-mode" @click="changeNavMode('side')">
+              <span style="height: 44px;background: #000;width: 14px;borderRadius: 4px 0 0 4px;float: left"></span>
+              <span style="height: 44px;background: #ededed;width: 30px;borderRadius: 0 4px 4px 0;float: left;text-align: center;"><i class="el-icon-check" style="color: #f00;font-size: 22px;line-height: 44px" v-show="navMode === 'side'"></i></span>
+            </span>
+            <span class="nav-mode" @click="changeNavMode('top')">
+              <span style="height: 10px;background: #000;width: 44px;borderRadius: 4px 4px 0 0;float: left"></span>
+              <span style="height: 34px;background: #ededed;width: 44px;borderRadius: 0 0 4px 4px;float: left;text-align: center;"><i class="el-icon-check" style="color: #f00;font-size: 22px;line-height: 34px" v-show="navMode === 'top'"></i></span>
+            </span>
           </div>
         </div>
       </el-drawer>
@@ -108,11 +114,9 @@ export default {
         width 20px
         height 20px
       .nav-mode
-        margin-right 10px
-        width 40px
-        height 40px
-        border-radius 4px
-        background-color #ededed
+        margin-right 20px
+        width 44px
+        height 44px
     >>> .el-drawer:focus
       outline none !important
     >>> .el-drawer.rtl

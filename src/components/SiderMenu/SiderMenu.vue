@@ -19,7 +19,8 @@
 
 <script>
 export default {
-  inject: ['menus', 'themeColor', 'navMode'],
+  props: ['themeColor'],
+  inject: ['menus', 'navMode'],
   data () {
     return {
       isCollapse: false

@@ -13,7 +13,7 @@ npm install vue-pro-layout --save
 yarn add vue-pro-layout
 ```
 
-```
+```vue
 <template>
   <pro-layout
     :menus="menus"

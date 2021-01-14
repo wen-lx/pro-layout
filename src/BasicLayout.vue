@@ -31,6 +31,7 @@ export default {
   },
   mounted () {
     localStorage.setItem('themeColor', '#1890ff')
+    localStorage.setItem('navMode', 'side')
   }
 }
 </script>

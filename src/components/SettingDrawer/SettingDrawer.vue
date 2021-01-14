@@ -1,22 +1,27 @@
 <template>
   <div class="setting">
     <el-drawer
-      title="主题设置"
       :visible.sync="drawer">
       <div class="content">
-        <p style="padding-bottom: 10px">Theme color</p>
-        <span class="color-box" v-for="(item, index) in colorList" :key="index" :style="{backgroundColor: item.value}" @click="changeThemeColor(item.value)">
-          <i class="el-icon-check" style="color: #fff;" v-show="themeColor === item.value"></i>
-        </span>
+        <span class="title">主题设置</span>
+        <div>
+          <p style="padding-bottom: 10px">Theme color</p>
+          <span class="color-box" v-for="(item, index) in colorList" :key="index" :style="{backgroundColor: item.value}" @click="changeThemeColor(item.value)">
+            <i class="el-icon-check" style="color: #fff;" v-show="themeColor === item.value"></i>
+          </span>
+        </div>
+        <div>
+          <p style="padding-bottom: 10px">Navigation Mode</p>
+          <span class="nav-mode" @click="changeNavMode('side')">side</span>
+          <span class="nav-mode" @click="changeNavMode('top')">top</span>
+        </div>
       </div>
     </el-drawer>
-    <i v-if="!drawer" class="el-icon-s-tools set-btn" @click="drawer = true" :style="{color: themeColor}"></i>
-    <i v-else class="el-icon-close set-btn" @click="drawer = false" :style="{color: themeColor}"></i>
+    <i :class="['set-btn', !drawer ? 'el-icon-setting' : 'el-icon-close']" @click="drawer = drawer ? false : true" :style="{backgroundColor: themeColor,right: !drawer ? '0px' : '300px'}"></i>
   </div>
 </template>
 
 <script>
-import { setThemeColor } from '../../utils/dynamicTheme.js'
 export default {
   data() {
     return {
@@ -31,19 +36,24 @@ export default {
         {value: '#2F54EB', label: 'geekblue'},
         {value: '#722ED1', label: 'purple'},
       ],
-      themeColor: localStorage.getItem('themeColor')
+      themeColor: localStorage.getItem('themeColor'),
+      navMode: 'top'
     }
   },
   provide () {
     return {
-      themeColor: this.themeColor
+      themeColor: this.themeColor,
+      navMode: this.navMode
     }
   },
   methods: {
     changeThemeColor (color) {
       this.themeColor = color
       localStorage.setItem('themeColor', color)
-      setThemeColor(color)
+    },
+    changeNavMode (mode) {
+      this.navMode = mode
+      localStorage.setItem('navMode', mode)
     }
   }
 }
@@ -51,20 +61,40 @@ export default {
 
 <style lang="stylus" scoped>
 .setting
-  position relative
+  position absolute
+  top 0
+  right 0
+  .set-btn
+    position relative
+    top 400px
+    right 300px
+    z-index 10000
+    font-size 20px
+    color #fff
+    padding 14px
+    border-radius 4px 0 0 4px
+    transition all 0.3s ease
+  .title
+    position absolute
+    top 20px
+    left 30px
+    font-size 20px
   .content
     padding 0 20px
     .color-box
-      display inline-block
       text-align center
       border-radius 4px
       margin-right 6px
       width 20px
       height 20px
-  .set-btn
-    position absolute
-    top 200px
-    z-index 999
-    font-size 60px
-    border-radius 20px
+    .nav-mode
+      margin-right 10px
+      width 40px
+      height 40px
+      border-radius 4px
+      background-color #ededed
+  >>> .el-drawer:focus
+    outline none !important
+  >>> .el-drawer.rtl
+    width 300px !important
 </style>

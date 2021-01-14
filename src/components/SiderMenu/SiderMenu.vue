@@ -43,6 +43,7 @@ export default {
   border-right none
   box-shadow 2px 0 6px rgba(0, 21, 41, 0.35)
   user-select none // 不可选中文本
+  transition 0s opacity ease
   &:not(.el-menu--collapse)
     width 200px
   .el-menu-item

@@ -7,7 +7,9 @@
           <i :class="menu.meta.icon"></i>
           <span>{{menu.menuTitle}}</span>
         </template>
-        <el-menu-item v-for="(item, index) in menu.menuItems" :key="index" :index="item.index" >{{item.title}}{{$route.path === item.index}}</el-menu-item>
+        <el-menu-item v-for="(item, index) in menu.menuItems" :key="index" :index="item.index" >
+          <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.index ? themeColor : '#001529'}">{{item.title}}</span>
+        </el-menu-item>
       </el-submenu>
     </el-menu>
   </div>
@@ -15,21 +17,24 @@
 
 <script>
 export default {
-  inject: ['menus', 'themeColor', 'navMode'],
+  props: ['themeColor'],
+  inject: ['menus', 'navMode'],
   data () {
     return {
-      isShow: false,
-      themeColor: ''
     }
   },
   mounted () {
-    this.themeColor = localStorage.getItem('themeColor')
-    this.isShow = true
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+.el-menu-item
+  padding 0
+  padding-left 0 !important
+  .menuitemwrap
+    width 100%
+    padding-left 10px
 .top-menu
   position absolute
   z-index 100
@@ -42,5 +47,6 @@ export default {
         border 0
         .el-submenu__title
           height 64px
+          // border 0 !important
 </style>
 

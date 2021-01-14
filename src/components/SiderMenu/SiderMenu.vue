@@ -6,7 +6,9 @@
         <i :class="menu.meta.icon"></i>
         <span slot="title">{{menu.menuTitle}}</span>
       </template>
-      <el-menu-item v-for="(item, index) in menu.menuItems" :key="index" :index="item.index" :style="{backgroundColor: $route.path === item.index ? themeColor : '#001529'}">{{item.title}}</el-menu-item>
+      <el-menu-item v-for="(item, index) in menu.menuItems" :key="index" :index="item.index">
+        <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.index ? themeColor : '#001529'}">{{item.title}}</span>
+      </el-menu-item>
     </el-submenu>
     <div id="fold">
       <i style="font-size: 30px;cursor: pointer" @click="changeIsCollapse"
@@ -42,6 +44,13 @@ export default {
   user-select none // 不可选中文本
   &:not(.el-menu--collapse)
     width 200px
+  .el-menu-item
+    padding 0
+    padding-left 0 !important
+    .menuitemwrap
+      width 100%
+      box-sizing border-box
+      padding-left 60px
   .is-active
     color #fff
   #fold

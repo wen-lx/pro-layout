@@ -10,7 +10,7 @@
       <slot></slot>
     </div>
     <!-- <setting-drawer></setting-drawer> -->
-    <div class="setting" v-if="settingShow">
+    <div class="setting" v-if="settings.isShow">
       <el-drawer
         :visible.sync="drawer">
         <div class="content">
@@ -44,7 +44,7 @@ import SiderMenu from '../SiderMenu'
 import TopMenu from '../TopMenu'
 import SettingDrawer from '../SettingDrawer'
 export default {
-  inject: ['menus', 'slots', 'settingShow'],
+  inject: ['menus', 'slots', 'settings'],
   components: {
     SiderMenu,
     TopMenu,

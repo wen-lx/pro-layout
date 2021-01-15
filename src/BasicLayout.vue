@@ -21,7 +21,7 @@ export default {
     return {
       menus: this.menus,
       slots: this.$slots,
-      settingShow: this.$attrs.settings.isShow
+      settings: this.$attrs.settings
     }
   },
   data () {

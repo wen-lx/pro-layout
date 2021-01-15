@@ -1,6 +1,6 @@
 <template>
   <el-menu :default-active="$route.path" unique-opened router
-  :collapse="isCollapse" background-color="#001529" text-color="#ddd" class="sideMenu">
+  :collapse="isCollapse" :background-color="settings.primaryColor" text-color="#ccc" class="sideMenu">
     <div class="logo"><slot name="logo"></slot></div>
     <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.path">
       <template slot="title">
@@ -8,7 +8,7 @@
         <span slot="title">{{menu.meta.title}}</span>
       </template>
       <el-menu-item v-for="(item, index) in menu.children" :key="index" :index="item.path">
-        <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? themeColor : '#001529'}">{{item.meta.title}}</span>
+        <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? themeColor : settings.primaryColor}">{{item.meta.title}}</span>
       </el-menu-item>
     </el-submenu>
     <div id="fold">
@@ -21,7 +21,7 @@
 <script>
 export default {
   props: ['themeColor', 'logo'],
-  inject: ['menus', 'navMode', 'slots'],
+  inject: ['menus', 'navMode', 'slots', 'settings'],
   data () {
     return {
       isCollapse: false
@@ -48,7 +48,7 @@ export default {
   height 100%
   color #fff
   border-right none
-  box-shadow 2px 0 6px rgba(0, 21, 41, 0.35)
+  box-shadow 2px 0 6px rgba(0, 21, 41, 0.05)
   user-select none // 不可选中文本
   // transition 0s opacity ease
   &:not(.el-menu--collapse)
@@ -56,6 +56,13 @@ export default {
   .el-menu-item
     padding 0
     padding-left 0 !important
+    height 46px
+    overflow hidden
+    &:hover
+      background-color transparent !important
+      color #fff !important
+      height 46px
+      overflow hidden
     .menuitemwrap
       width 100%
       box-sizing border-box

@@ -38,7 +38,7 @@ export default {
       settings: {
         layout: 'sidemenu',
         theme: 'dark',
-        primaryColor: '#52C41A',
+        primaryColor: '#001529',
         isShow: true
       }
     }

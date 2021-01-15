@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     handleMediaQuery (val) {
-      console.log('media1', val)
     }
   }
 }

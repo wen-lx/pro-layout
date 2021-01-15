@@ -1,7 +1,7 @@
 <template>
   <el-menu :default-active="$route.path" unique-opened router
   :collapse="isCollapse" background-color="#001529" text-color="#ddd" class="sideMenu">
-  <h2 style="text-align: center;padding: 20px">Pro Layout</h2>
+    <div class="logo"><slot name="logo"></slot></div>
     <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.index">
       <template slot="title">
         <i :class="menu.meta.icon"></i>
@@ -20,14 +20,20 @@
 
 <script>
 export default {
-  props: ['themeColor'],
-  inject: ['menus', 'navMode'],
+  props: ['themeColor', 'logo'],
+  inject: ['menus', 'navMode', 'slots'],
   data () {
     return {
       isCollapse: false
     }
   },
-  mounted () {
+  watch: {
+    logo () {
+      this.$slots.logo = this.slots.logo[0]
+    }
+  },
+  created () {
+    this.$slots.logo = this.slots.logo[0]
   },
   methods: {
     changeIsCollapse () {
@@ -56,6 +62,10 @@ export default {
       padding-left 60px
   .is-active
     color #fff
+  .logo
+    width 100%
+    height 64px
+    overflow hidden
   #fold
     position absolute
     bottom 0

@@ -20,7 +20,8 @@ export default {
   },
   provide () {
     return {
-      menus: this.$attrs.menus
+      menus: this.$attrs.menus,
+      slots: this.$slots
     }
   },
   data () {

@@ -1,13 +1,12 @@
 <template>
   <div class="container" :style="{display: navMode === 'side' ? 'flex' : 'block'}">
-    <SiderMenu v-if="navMode === 'side'" :themeColor="themeColor"></SiderMenu>
-    <TopMenu v-if="navMode === 'top'" :themeColor="themeColor"></TopMenu>
-    <!-- <div style="marginTop: 64px;flex: 1">
-      <div style="height: 64px;backgroundColor: #fff;border-bottom: 1px solid #eee;position: fixed;width: 100%;top: 0;box-shadow: 1px 0 4px rgba(0, 21, 41, 0.1)">asdfasdf</div>
-      <div style="overflow: auto;height: 100%"><slot></slot></div>
-    </div> -->
+    <SiderMenu v-if="navMode === 'side'" :themeColor="themeColor" :logo="slots.logo[0]"></SiderMenu>
+    <TopMenu v-if="navMode === 'top'" :themeColor="themeColor" :left="slots.left[0]" :right="slots.right[0]" :logo="slots.logo[0]"></TopMenu>
     <div style="overflow: auto;height: 100%;marginTop: 64px;flex: 1">
-      <div style="height: 64px;backgroundColor: #fff;border-bottom: 1px solid #eee;position: fixed;width: 100%;top: 0;box-shadow: 1px 0 4px rgba(0, 21, 41, 0.1)">asdfasdf</div>
+      <div v-if="navMode === 'side'" style="height: 64px;backgroundColor: #fff;border-bottom: 1px solid #eee;position: fixed;width: 100%;top: 0;box-shadow: 1px 0 4px rgba(0, 21, 41, 0.1)">
+        <div style="margin-left: 10px"><slot name="left"></slot></div>
+        <div style="position: fixed;right: 10px;top: 0px"><slot name="right"></slot></div>
+      </div>
       <slot></slot>
     </div>
     <!-- <setting-drawer></setting-drawer> -->
@@ -45,6 +44,7 @@ import SiderMenu from '../SiderMenu'
 import TopMenu from '../TopMenu'
 import SettingDrawer from '../SettingDrawer'
 export default {
+  inject: ['menus', 'slots'],
   components: {
     SiderMenu,
     TopMenu,
@@ -70,10 +70,21 @@ export default {
   provide () {
     return {
       themeColor: this.themeColor,
-      navMode: this.navMode
+      navMode: this.navMode,
     }
   },
+  watch: {
+    '$route' () {
+      this.$slots.left = this.slots.left[0]
+      this.$slots.right = this.slots.right[0]
+    }
+  },
+  created () {
+    this.$slots.left = this.slots.left[0]
+    this.$slots.right = this.slots.right[0]
+  },
   mounted () {
+    console.log(this.menus,this.slots)
   },
   methods: {
     changeThemeColor (color) {

@@ -9,35 +9,24 @@
     :siderWidth="208"
     v-bind="settings"
   >
-    <!-- <template v-slot:menuHeaderRender>
+    <template v-slot:logo>
       <div>
-        <img src="../assets/logo.svg" />
-        <h1>Pro Layout</h1>
+        <img src="../assets/logo.png" style="width: 40px; height: 40px;padding: 12px;float: left"/>
+        <span style="font-size: 24px;line-height: 64px;float: left">Pro Layout</span>
       </div>
     </template>
-    <template v-slot:headerContentRender>
+    <template v-slot:left>
       <div>
         <el-tooltip title="刷新页面">
-          <i class="el-icon-refresh-left" style="cursor: pointer;" @click="() => { $message.info('假的') }"></i>
+          <i class="el-icon-refresh-left" style="cursor: pointer;font-size: 30px;line-height: 64px"></i>
         </el-tooltip>
       </div>
     </template>
-    <template v-slot:rightContentRender>
-      <div :class="['ant-pro-global-header-index-right', settings.layout === 'topmenu' && `ant-pro-global-header-index-${settings.theme}`]">
+    <template v-slot:right>
+      <div style="line-height: 64px">
         rightContentRender
       </div>
     </template>
-    <template v-slot:footerRender>
-      <div>footerRender</div>
-    </template>
-    <setting-drawer
-      :settings="settings"
-      @change="handleSettingChange"
-    >
-      <div style="margin: 12px 0;">
-        This is SettingDrawer custom footer content.
-      </div>
-    </setting-drawer> -->
     <router-view />
   </pro-layout>
 </template>
@@ -107,7 +96,6 @@ export default {
   },
   methods: {
     handleMediaQuery (val) {
-      console.log('media', val)
     },
     handleCollapse (val) {
       this.collapsed = val

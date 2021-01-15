@@ -2,7 +2,7 @@
   <div class="top-menu">
     <el-menu class="menus-wrap" :default-active="$route.path" router
     background-color="#001529" text-color="#ddd" active-text-color="#fff" mode="horizontal" menu-trigger="hover">
-    <h2 style="display: inline-block;color: #fff;line-height: 64px;float: left;margin-right: 20px">Pro Layout</h2>
+    <h2 style="display: inline-block;color: #fff;line-height: 64px;float: left;margin-right: 20px"><slot name="logo"></slot></h2>
       <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.index" :show-timeout="100" :hide-timeout="100">
         <template slot="title">
           <i :class="menu.meta.icon"></i>
@@ -13,16 +13,34 @@
         </el-menu-item>
       </el-submenu>
     </el-menu>
+    <div style="position: fixed;left:10px;top: 0px"><slot name="left"></slot></div>
+    <div style="position: fixed;right:10px;top: 0px"><slot name="right"></slot></div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['themeColor'],
-  inject: ['menus', 'navMode'],
+  props: ['themeColor', 'left', 'right', 'logo'],
+  inject: ['menus', 'navMode', 'slots'],
   data () {
     return {
     }
+  },
+  watch: {
+    left () {
+      this.$slots.left = this.slots.left[0]
+    },
+    right () {
+      this.$slots.right = this.slots.right[0]
+    },
+    logo () {
+      this.$slots.logo = this.slots.logo[0]
+    }
+  },
+  created () {
+    this.$slots.logo = this.slots.logo[0]
+    this.$slots.left = this.slots.left[0]
+    this.$slots.right = this.slots.right[0]
   },
   mounted () {
   }
@@ -43,6 +61,7 @@ export default {
   width 100%
   height 64px
   text-align center
+  color #fff
   >>> .el-menu--horizontal
         display inline-block
         border 0

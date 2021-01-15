@@ -12,7 +12,6 @@ import ContainerQuery from './components/ContainerQuery'
 import ConfigProvider from './components/ConfigProvider'
 import Layout from './components/Layout'
 export default {
-  props: ['setting'],
   components: {
     ContainerQuery,
     ConfigProvider,
@@ -21,7 +20,8 @@ export default {
   provide () {
     return {
       menus: this.menus,
-      slots: this.$slots
+      slots: this.$slots,
+      settingShow: this.$attrs.settings.isShow
     }
   },
   data () {
@@ -39,6 +39,7 @@ export default {
   computed: {
   },
   mounted () {
+    console.log(111, this)
     localStorage.setItem('themeColor', '#1890ff')
     localStorage.setItem('navMode', 'side')
   }

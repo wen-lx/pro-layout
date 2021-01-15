@@ -10,7 +10,7 @@
       <slot></slot>
     </div>
     <!-- <setting-drawer></setting-drawer> -->
-    <div class="setting">
+    <div class="setting" v-if="settingShow">
       <el-drawer
         :visible.sync="drawer">
         <div class="content">
@@ -44,7 +44,7 @@ import SiderMenu from '../SiderMenu'
 import TopMenu from '../TopMenu'
 import SettingDrawer from '../SettingDrawer'
 export default {
-  inject: ['menus', 'slots'],
+  inject: ['menus', 'slots', 'settingShow'],
   components: {
     SiderMenu,
     TopMenu,
@@ -84,7 +84,6 @@ export default {
     this.$slots.right = this.slots.right[0]
   },
   mounted () {
-    console.log(this.menus,this.slots)
   },
   methods: {
     changeThemeColor (color) {

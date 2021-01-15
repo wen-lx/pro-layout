@@ -34,7 +34,7 @@ export default [
     meta: {
       title: i18n.t('router.system'),
       iconClass: 'el-icon-s-tools',
-      prolayout: false
+      prolayout: true
     },
     component: BasicLayout,
     children: [

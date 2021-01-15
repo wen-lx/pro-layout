@@ -1,6 +1,7 @@
 <template>
   <el-menu :default-active="$route.path" unique-opened router
   :collapse="isCollapse" background-color="#001529" text-color="#ddd" class="sideMenu">
+  <h2 style="text-align: center;padding: 20px">Pro Layout</h2>
     <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.index">
       <template slot="title">
         <i :class="menu.meta.icon"></i>
@@ -43,9 +44,9 @@ export default {
   border-right none
   box-shadow 2px 0 6px rgba(0, 21, 41, 0.35)
   user-select none // 不可选中文本
-  transition 0s opacity ease
+  // transition 0s opacity ease
   &:not(.el-menu--collapse)
-    width 200px
+    width 210px
   .el-menu-item
     padding 0
     padding-left 0 !important

@@ -2,6 +2,7 @@
   <div class="top-menu">
     <el-menu class="menus-wrap" :default-active="$route.path" router
     background-color="#001529" text-color="#ddd" active-text-color="#fff" mode="horizontal" menu-trigger="hover">
+    <h2 style="display: inline-block;color: #fff;line-height: 64px;float: left;margin-right: 20px">Pro Layout</h2>
       <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.index" :show-timeout="100" :hide-timeout="100">
         <template slot="title">
           <i :class="menu.meta.icon"></i>
@@ -36,7 +37,7 @@ export default {
     width 100%
     padding-left 10px
 .top-menu
-  position absolute
+  position fixed
   z-index 100
   background-color #001529
   width 100%

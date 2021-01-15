@@ -1,6 +1,48 @@
 <template>
   <div>
-    0ppppp
+    <h1>tttttttttttt</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>ppppppppppp</h1>
+    <h1>tttttttttttt</h1>
+    <div class="bottom">bottom</div>
   </div>
 </template>
 
@@ -21,5 +63,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+.bottom
+  height 40px
+  position fixed
+  bottom 0
+  background-color #fff
+  width 100%
 </style>

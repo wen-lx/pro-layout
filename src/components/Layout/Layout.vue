@@ -1,8 +1,15 @@
 <template>
   <div class="container" :style="{display: navMode === 'side' ? 'flex' : 'block'}">
     <SiderMenu v-if="navMode === 'side'" :themeColor="themeColor"></SiderMenu>
-    <TopMenu v-else :themeColor="themeColor"></TopMenu>
-    <div :style="{paddingTop: navMode === 'side' ? '0' : '64px'}"><slot></slot></div>
+    <TopMenu v-if="navMode === 'top'" :themeColor="themeColor"></TopMenu>
+    <!-- <div style="marginTop: 64px;flex: 1">
+      <div style="height: 64px;backgroundColor: #fff;border-bottom: 1px solid #eee;position: fixed;width: 100%;top: 0;box-shadow: 1px 0 4px rgba(0, 21, 41, 0.1)">asdfasdf</div>
+      <div style="overflow: auto;height: 100%"><slot></slot></div>
+    </div> -->
+    <div style="overflow: auto;height: 100%;marginTop: 64px;flex: 1">
+      <div style="height: 64px;backgroundColor: #fff;border-bottom: 1px solid #eee;position: fixed;width: 100%;top: 0;box-shadow: 1px 0 4px rgba(0, 21, 41, 0.1)">asdfasdf</div>
+      <slot></slot>
+    </div>
     <!-- <setting-drawer></setting-drawer> -->
     <div class="setting">
       <el-drawer
@@ -67,7 +74,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.themeColor, this.navMode)
   },
   methods: {
     changeThemeColor (color) {
@@ -86,12 +92,13 @@ export default {
 .container
   width 100%
   height 100%
+  overflow hidden
   .setting
     position absolute
     top 0
     right 0
     .set-btn
-      position relative
+      position fixed
       top 400px
       right 300px
       z-index 10000

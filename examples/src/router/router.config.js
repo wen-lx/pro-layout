@@ -9,7 +9,7 @@ export default [
         component: () => import('@/views/Person.vue')
       },{
         path: '/222',
-        component: () => import('@/views/Person.vue')
+        component: () => import('@/views/Member.vue')
       }
     ]
   }

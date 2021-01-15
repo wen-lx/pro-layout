@@ -20,12 +20,20 @@ export default {
   },
   provide () {
     return {
-      menus: this.$attrs.menus,
+      menus: this.menus,
       slots: this.$slots
     }
   },
   data () {
     return {
+      menus: this.$attrs.menus.filter(item => {
+        if (item.meta && item.meta.prolayout) {
+          item.children = item.children.filter(ite => {
+            return ite.meta.menu
+          })
+          return item
+        }
+      })
     }
   },
   computed: {

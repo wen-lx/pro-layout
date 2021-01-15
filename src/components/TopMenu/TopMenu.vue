@@ -3,13 +3,13 @@
     <el-menu class="menus-wrap" :default-active="$route.path" router
     background-color="#001529" text-color="#ddd" active-text-color="#fff" mode="horizontal" menu-trigger="hover">
     <h2 style="display: inline-block;color: #fff;line-height: 64px;float: left;margin-right: 20px"><slot name="logo"></slot></h2>
-      <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.index" :show-timeout="100" :hide-timeout="100">
+      <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.path" :show-timeout="100" :hide-timeout="100">
         <template slot="title">
-          <i :class="menu.meta.icon"></i>
-          <span>{{menu.menuTitle}}</span>
+          <i :class="menu.meta.iconClass"></i>
+          <span>{{menu.meta.title}}</span>
         </template>
-        <el-menu-item v-for="(item, index) in menu.menuItems" :key="index" :index="item.index" >
-          <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.index ? themeColor : '#001529'}">{{item.title}}</span>
+        <el-menu-item v-for="(item, index) in menu.children" :key="index" :index="item.path" >
+          <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? themeColor : '#001529'}">{{item.meta.title}}</span>
         </el-menu-item>
       </el-submenu>
     </el-menu>

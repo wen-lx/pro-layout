@@ -33,49 +33,11 @@
 
 <script>
 // import { i18nRender } from '../locales'
+import menus from '../router/router.config'
 export default {
   data () {
     return {
-      menus: [{
-        menuTitle: '导航一',
-        index: '/aa',
-        meta: {icon: 'el-icon-location'},
-        menuItems: [{
-          title: '选项1',
-          index: '/111',
-          meta: {icon: 'el-icon-location'}
-        },{
-          title: '选项2',
-          index: '/222',
-          meta: {icon: 'el-icon-location'}
-        }]
-      },{
-        menuTitle: '导航二',
-        index: '/cc',
-        meta: {icon: 'el-icon-location'},
-        menuItems: [{
-          title: '选项3',
-          index: '/333',
-          meta: {icon: 'el-icon-location'}
-        },{
-          title: '选项4',
-          index: '/444',
-          meta: {icon: 'el-icon-location'}
-        }]
-      },{
-        menuTitle: '导航三',
-        index: '/ss',
-        meta: {icon: 'el-icon-location'},
-        menuItems: [{
-          title: '选项5',
-          index: '/555',
-          meta: {icon: 'el-icon-location'}
-        },{
-          title: '选项6',
-          index: '/666',
-          meta: {icon: 'el-icon-location'}
-        }]
-      }],
+      menus: menus,
       collapsed: false,
       mediaQuery: {},
       isMobile: false,

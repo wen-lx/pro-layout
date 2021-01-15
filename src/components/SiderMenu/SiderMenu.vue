@@ -2,13 +2,13 @@
   <el-menu :default-active="$route.path" unique-opened router
   :collapse="isCollapse" background-color="#001529" text-color="#ddd" class="sideMenu">
     <div class="logo"><slot name="logo"></slot></div>
-    <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.index">
+    <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.path">
       <template slot="title">
-        <i :class="menu.meta.icon"></i>
-        <span slot="title">{{menu.menuTitle}}</span>
+        <i :class="menu.meta.iconClass"></i>
+        <span slot="title">{{menu.meta.title}}</span>
       </template>
-      <el-menu-item v-for="(item, index) in menu.menuItems" :key="index" :index="item.index">
-        <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.index ? themeColor : '#001529'}">{{item.title}}</span>
+      <el-menu-item v-for="(item, index) in menu.children" :key="index" :index="item.path">
+        <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? themeColor : '#001529'}">{{item.meta.title}}</span>
       </el-menu-item>
     </el-submenu>
     <div id="fold">

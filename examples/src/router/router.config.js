@@ -32,22 +32,17 @@ export default [
     path: '/system',
     redirect: '/system/system-config',
     meta: {
-      title: i18n.t('app.system-info'),
-      iconClass: 'el-icon-s-tools'
+      title: i18n.t('router.system'),
+      iconClass: 'el-icon-s-tools',
+      prolayout: false
     },
     component: BasicLayout,
     children: [
       {
         path: '/system/system-config',
         name: 'system-config',
-        meta: { title: i18n.t('app.system-config'), isAdmin: 'admin', role: 'getSystemList' },
+        meta: { title: i18n.t('router.system-config'), menu: true },
         component: () => import('@views/SystemInfo/SystemConfig.vue')
-      },
-      {
-        path: '/system/device-type-manage',
-        name: 'device-type-manage',
-        meta: { title: i18n.t('app.device-type'), isAdmin: 'admin' },
-        component: () => import('@views/SystemInfo/DeviceTypeManage.vue')
       }
     ]
   },
@@ -56,27 +51,28 @@ export default [
     path: '/person',
     redirect: '/person/member-manage',
     meta: {
-      title: i18n.t('member.info'),
-      iconClass: 'el-icon-user-solid'
+      title: i18n.t('router.member'),
+      iconClass: 'el-icon-user-solid',
+      prolayout: true
     },
     component: BasicLayout,
     children: [
       {
         path: '/person/member-manage',
         name: 'member-manage',
-        meta: { title: i18n.t('member.management'), isAdmin: 'admin', role: 'getUserList', showGroupManage: 'show' },
+        meta: { title: i18n.t('router.member-manage'), menu: true },
         component: () => import('@views/PersonInfo/MemberManage.vue')
       },
       {
-        path: '/person/member-invitation',
-        name: 'member-invitation',
-        meta: { title: '', isAdmin: 'admin', role: 'getUserList', showGroupManage: 'show' },
+        path: '/person/admin-manage',
+        name: 'admin-manage',
+        meta: { title: i18n.t('router.admin-manage'), menu: false },
         component: () => import('@views/PersonInfo/AdminManage.vue')
       },
       {
-        path: '/person/visitor-apply-manage',
-        name: 'visitor-apply-manage',
-        meta: { title: i18n.t('member.visitor.appointment'), isAdmin: 'admin', role: 'getVisitorApplyList', showGroupManage: 'show' },
+        path: '/person/visitor-manage',
+        name: 'visitor-manage',
+        meta: { title: i18n.t('router.visitor-manage'), menu: true },
         component: () => import('@views/PersonInfo/VisitorManage.vue')
       }
     ]
@@ -86,27 +82,28 @@ export default [
     path: '/device',
     redirect: '/device/device-manage',
     meta: {
-      title: i18n.t('app.device-info'),
-      iconClass: 'el-icon-s-platform'
+      title: i18n.t('router.device'),
+      iconClass: 'el-icon-s-platform',
+      prolayout: true
     },
     component: BasicLayout,
     children: [
       {
         path: '/device/device-manage',
         name: 'device-manage',
-        meta: { title: i18n.t('app.device-manage'), isAdmin: 'admin', role: 'getDeviceList' },
+        meta: { title: i18n.t('router.device-manage'), menu: true },
         component: () => import('@views/DeviceInfo/DeviceManage.vue')
       },
       {
         path: '/device/device-style-manage',
         name: 'device-style-manage',
-        meta: { title: i18n.t('app.device-style-manage'), isAdmin: 'admin', role: 'getStylesList' },
+        meta: { title: i18n.t('router.style-manage'), menu: true },
         component: () => import('@views/DeviceInfo/StyleManage.vue')
       },
       {
         path: '/device/time-template-manage',
         name: 'time-template-manage',
-        meta: { title: i18n.t('app.time-template'), isAdmin: 'admin', role: 'getTimeTemplateList' },
+        meta: { title: i18n.t('router.time-template-manage'), menu: true },
         component: () => import('@views/DeviceInfo/TimeTemplateManage.vue')
       }
     ]

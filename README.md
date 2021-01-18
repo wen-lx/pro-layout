@@ -14,7 +14,7 @@ yarn add vue-pro-layout
 ```
 
 ```vue
-// pro-layout/BasicLayout.vue
+// layouts/BasicLayout.vue
 <template>
   <pro-layout
     :menus="menus"
@@ -80,6 +80,7 @@ export default {
 ```
 
 ```js
+// router/router.config.js
 import BasicLayout from '../layouts/BasicLayout.vue'
 import i18n from '@/i18n/index' // 引入多语言
 
@@ -201,4 +202,4 @@ export default [
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://github.com/wen-lx/pro-layout).

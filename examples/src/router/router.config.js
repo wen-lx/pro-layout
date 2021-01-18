@@ -11,7 +11,7 @@ export default [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@views/Login/Login.vue')
+    component: () => import('@/views/Login/Login.vue')
   },
   // 欢迎页
   {
@@ -23,7 +23,7 @@ export default [
         path: '/welcome',
         name: 'welcome',
         meta: { isSuperAdmin: 'hidden', isAdmin: 'admin' },
-        component: () => import('@views/Welcome/Welcome.vue')
+        component: () => import('@/views/Welcome/Welcome.vue')
       }
     ]
   },
@@ -34,15 +34,15 @@ export default [
     meta: {
       title: i18n.t('router.system'),
       iconClass: 'el-icon-s-tools',
-      prolayout: true
+      prolayout: true // 显示在菜单栏
     },
     component: BasicLayout,
     children: [
       {
         path: '/system/system-config',
         name: 'system-config',
-        meta: { title: i18n.t('router.system-config'), menu: true },
-        component: () => import('@views/SystemInfo/SystemConfig.vue')
+        meta: { title: i18n.t('router.system-config'), menu: true }, // 显示在菜单栏
+        component: () => import('@/views/SystemInfo/SystemConfig.vue')
       }
     ]
   },
@@ -61,19 +61,19 @@ export default [
         path: '/person/member-manage',
         name: 'member-manage',
         meta: { title: i18n.t('router.member-manage'), menu: true },
-        component: () => import('@views/PersonInfo/MemberManage.vue')
+        component: () => import('@/views/PersonInfo/MemberManage.vue')
       },
       {
         path: '/person/admin-manage',
         name: 'admin-manage',
         meta: { title: i18n.t('router.admin-manage'), menu: false },
-        component: () => import('@views/PersonInfo/AdminManage.vue')
+        component: () => import('@/views/PersonInfo/AdminManage.vue')
       },
       {
         path: '/person/visitor-manage',
         name: 'visitor-manage',
         meta: { title: i18n.t('router.visitor-manage'), menu: true },
-        component: () => import('@views/PersonInfo/VisitorManage.vue')
+        component: () => import('@/views/PersonInfo/VisitorManage.vue')
       }
     ]
   },
@@ -92,19 +92,19 @@ export default [
         path: '/device/device-manage',
         name: 'device-manage',
         meta: { title: i18n.t('router.device-manage'), menu: true },
-        component: () => import('@views/DeviceInfo/DeviceManage.vue')
+        component: () => import('@/views/DeviceInfo/DeviceManage.vue')
       },
       {
         path: '/device/device-style-manage',
         name: 'device-style-manage',
         meta: { title: i18n.t('router.style-manage'), menu: true },
-        component: () => import('@views/DeviceInfo/StyleManage.vue')
+        component: () => import('@/views/DeviceInfo/StyleManage.vue')
       },
       {
         path: '/device/time-template-manage',
         name: 'time-template-manage',
         meta: { title: i18n.t('router.time-template-manage'), menu: true },
-        component: () => import('@views/DeviceInfo/TimeTemplateManage.vue')
+        component: () => import('@/views/DeviceInfo/TimeTemplateManage.vue')
       }
     ]
   },
@@ -113,6 +113,6 @@ export default [
     path: '/*',
     name: 'Exception',
     meta: { isAdmin: 'admin' },
-    component: () => import('@views/Exception/Exception.vue')
+    component: () => import('@/views/Exception/Exception.vue')
   }
 ]

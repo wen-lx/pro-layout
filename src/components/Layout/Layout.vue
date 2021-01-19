@@ -1,40 +1,13 @@
 <template>
-  <div class="container" :style="{display: navMode === 'side' ? 'flex' : 'block'}">
-    <SiderMenu v-if="navMode === 'side'" :themeColor="themeColor" :logo="slots.logo[0]"></SiderMenu>
-    <TopMenu v-if="navMode === 'top'" :themeColor="themeColor" :left="slots.left[0]" :right="slots.right[0]" :logo="slots.logo[0]"></TopMenu>
+  <div class="container" :style="{display: settings.layout === 'sidemenu' ? 'flex' : 'block'}">
+    <SiderMenu v-if="settings.layout === 'sidemenu'" :themeColor="settings.themeColor" :logo="slots.logo[0]"></SiderMenu>
+    <TopMenu v-if="settings.layout === 'topmenu'" :themeColor="settings.themeColor" :left="slots.left[0]" :right="slots.right[0]" :logo="slots.logo[0]"></TopMenu>
     <div style="overflow: auto;height: 100%;marginTop: 64px;flex: 1">
-      <div v-if="navMode === 'side'" style="height: 64px;backgroundColor: #fff;border-bottom: 1px solid #eee;position: fixed;width: 100%;top: 0;box-shadow: 1px 0 4px rgba(0, 21, 41, 0.1)">
+      <div v-if="settings.layout === 'sidemenu'" style="height: 64px;backgroundColor: #fff;border-bottom: 1px solid #eee;position: fixed;width: 100%;top: 0;box-shadow: 1px 0 4px rgba(0, 21, 41, 0.1)">
         <div style="margin-left: 10px"><slot name="left"></slot></div>
         <div style="position: fixed;right: 10px;top: 0px"><slot name="right"></slot></div>
       </div>
       <slot></slot>
-    </div>
-    <!-- <setting-drawer></setting-drawer> -->
-    <div class="setting" v-if="settings.isShow">
-      <el-drawer
-        :visible.sync="drawer">
-        <div class="content">
-          <span class="title">主题设置</span>
-          <div>
-            <p style="padding: 10px">Theme color</p>
-            <span class="color-box" v-for="(item, index) in colorList" :key="index" :style="{backgroundColor: item.value}" @click="changeThemeColor(item.value)">
-              <i class="el-icon-check" style="color: #fff;" v-show="themeColor === item.value"></i>
-            </span>
-          </div>
-          <div>
-            <p style="padding: 10px">Navigation Mode</p>
-            <span class="nav-mode" @click="changeNavMode('side')">
-              <span style="height: 44px;background: #000;width: 14px;borderRadius: 4px 0 0 4px;float: left"></span>
-              <span style="height: 44px;background: #ededed;width: 30px;borderRadius: 0 4px 4px 0;float: left;text-align: center;"><i class="el-icon-check" style="color: #f00;font-size: 22px;line-height: 44px" v-show="navMode === 'side'"></i></span>
-            </span>
-            <span class="nav-mode" @click="changeNavMode('top')">
-              <span style="height: 10px;background: #000;width: 44px;borderRadius: 4px 4px 0 0;float: left"></span>
-              <span style="height: 34px;background: #ededed;width: 44px;borderRadius: 0 0 4px 4px;float: left;text-align: center;"><i class="el-icon-check" style="color: #f00;font-size: 22px;line-height: 34px" v-show="navMode === 'top'"></i></span>
-            </span>
-          </div>
-        </div>
-      </el-drawer>
-      <i :class="['set-btn', !drawer ? 'el-icon-setting' : 'el-icon-close']" @click="drawer = drawer ? false : true" :style="{backgroundColor: themeColor,right: !drawer ? '0px' : '300px'}"></i>
     </div>
   </div>
 </template>
@@ -42,13 +15,11 @@
 <script>
 import SiderMenu from '../SiderMenu'
 import TopMenu from '../TopMenu'
-import SettingDrawer from '../SettingDrawer'
 export default {
   inject: ['menus', 'slots', 'settings'],
   components: {
     SiderMenu,
-    TopMenu,
-    SettingDrawer
+    TopMenu
   },
   data() {
     return {
@@ -62,15 +33,7 @@ export default {
         {value: '#52C41A', label: 'green'},
         {value: '#2F54EB', label: 'geekblue'},
         {value: '#722ED1', label: 'purple'},
-      ],
-      themeColor: localStorage.getItem('themeColor'),
-      navMode: localStorage.getItem('navMode')
-    }
-  },
-  provide () {
-    return {
-      themeColor: this.themeColor,
-      navMode: this.navMode,
+      ]
     }
   },
   watch: {
@@ -82,17 +45,14 @@ export default {
   created () {
     this.$slots.left = this.slots.left[0]
     this.$slots.right = this.slots.right[0]
+    console.log(111111, this.$slots.left)
   },
   mounted () {
   },
   methods: {
     changeThemeColor (color) {
-      this.themeColor = color
-      localStorage.setItem('themeColor', color)
     },
     changeNavMode (mode) {
-      this.navMode = mode
-      localStorage.setItem('navMode', mode)
     }
   }
 }
@@ -103,39 +63,4 @@ export default {
   width 100%
   height 100%
   overflow hidden
-  .setting
-    position absolute
-    top 0
-    right 0
-    .set-btn
-      position fixed
-      top 400px
-      right 300px
-      z-index 10000
-      font-size 20px
-      color #fff
-      padding 14px
-      border-radius 4px 0 0 4px
-      transition all 0.3s ease
-    .title
-      position absolute
-      top 20px
-      left 30px
-      font-size 20px
-    .content
-      padding 0 20px
-      .color-box
-        text-align center
-        border-radius 4px
-        margin-right 6px
-        width 20px
-        height 20px
-      .nav-mode
-        margin-right 20px
-        width 44px
-        height 44px
-    >>> .el-drawer:focus
-      outline none !important
-    >>> .el-drawer.rtl
-      width 300px !important
 </style>

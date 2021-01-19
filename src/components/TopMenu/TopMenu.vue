@@ -9,7 +9,7 @@
           <span>{{menu.meta.title}}</span>
         </template>
         <el-menu-item v-for="(item, index) in menu.children" :key="index" :index="item.path" >
-          <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? themeColor : settings.primaryColor}">{{item.meta.title}}</span>
+          <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? settings.themeColor : settings.primaryColor}">{{item.meta.title}}</span>
         </el-menu-item>
       </el-submenu>
     </el-menu>
@@ -20,8 +20,8 @@
 
 <script>
 export default {
-  props: ['themeColor', 'left', 'right', 'logo'],
-  inject: ['menus', 'navMode', 'slots', 'settings'],
+  props: ['left', 'right', 'logo'],
+  inject: ['menus', 'slots', 'settings'],
   data () {
     return {
     }

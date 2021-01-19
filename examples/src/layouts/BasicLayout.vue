@@ -37,7 +37,7 @@ export default {
       isMobile: false,
       settings: {
         layout: 'sidemenu',
-        theme: 'dark',
+        themeColor: '#1890ff',
         primaryColor: '#001529',
         isShow: true
       }

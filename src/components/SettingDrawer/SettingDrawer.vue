@@ -5,24 +5,32 @@
       <div class="content">
         <span class="title">主题设置</span>
         <div>
-          <p style="padding-bottom: 10px">Theme color</p>
+          <p style="padding: 10px">Theme color</p>
           <span class="color-box" v-for="(item, index) in colorList" :key="index" :style="{backgroundColor: item.value}" @click="changeThemeColor(item.value)">
-            <i class="el-icon-check" style="color: #fff;" v-show="themeColor === item.value"></i>
+            <i class="el-icon-check" style="color: #fff;" v-show="settings.themeColor === item.value"></i>
           </span>
         </div>
         <div>
-          <p style="padding-bottom: 10px">Navigation Mode</p>
-          <span class="nav-mode" @click="changeNavMode('side')"><span style=""></span><span style=""></span></span>
-          <span class="nav-mode" @click="changeNavMode('top')"><span style="height"></span><span style=""></span></span>
+          <p style="padding: 10px">Navigation Mode</p>
+          <span class="nav-mode" @click="changeNavMode('sidemenu')">
+            <span style="height: 44px;background: #000;width: 14px;borderRadius: 4px 0 0 4px;float: left"></span>
+            <span style="height: 44px;background: #ededed;width: 30px;borderRadius: 0 4px 4px 0;float: left;text-align: center;"><i class="el-icon-check" style="color: #f00;font-size: 22px;line-height: 44px" v-show="settings.layout === 'sidemenu'"></i></span>
+          </span>
+          <span class="nav-mode" @click="changeNavMode('topmenu')">
+            <span style="height: 10px;background: #000;width: 44px;borderRadius: 4px 4px 0 0;display: block"></span>
+            <span style="height: 34px;background: #ededed;width: 44px;borderRadius: 0 0 4px 4px;text-align: center;"><i class="el-icon-check" style="color: #f00;font-size: 22px;line-height: 34px" v-show="settings.layout === 'topmenu'"></i></span>
+          </span>
         </div>
       </div>
     </el-drawer>
-    <i :class="['set-btn', !drawer ? 'el-icon-setting' : 'el-icon-close']" @click="drawer = drawer ? false : true" :style="{backgroundColor: themeColor,right: !drawer ? '0px' : '300px'}"></i>
+    <slot></slot>
+    <i :class="['set-btn', !drawer ? 'el-icon-setting' : 'el-icon-close']" @click="drawer = drawer ? false : true" :style="{backgroundColor: settings.themeColor,right: !drawer ? '0px' : '300px'}"></i>
   </div>
 </template>
 
 <script>
 export default {
+  inject: ['settings'],
   data() {
     return {
       drawer: false,
@@ -35,25 +43,15 @@ export default {
         {value: '#52C41A', label: 'green'},
         {value: '#2F54EB', label: 'geekblue'},
         {value: '#722ED1', label: 'purple'},
-      ],
-      themeColor: localStorage.getItem('themeColor'),
-      navMode: 'top'
-    }
-  },
-  provide () {
-    return {
-      themeColor: this.themeColor,
-      navMode: this.navMode
+      ]
     }
   },
   methods: {
     changeThemeColor (color) {
-      this.themeColor = color
-      localStorage.setItem('themeColor', color)
+      this.settings.themeColor = color
     },
     changeNavMode (mode) {
-      this.navMode = mode
-      localStorage.setItem('navMode', mode)
+      this.settings.layout = mode
     }
   }
 }
@@ -61,11 +59,10 @@ export default {
 
 <style lang="stylus" scoped>
 .setting
-  position absolute
-  top 0
-  right 0
+  width 100%
+  height 100%
   .set-btn
-    position relative
+    position fixed
     top 400px
     right 300px
     z-index 10000
@@ -88,11 +85,10 @@ export default {
       width 20px
       height 20px
     .nav-mode
-      margin-right 10px
-      width 60px
-      height 60px
-      border-radius 4px
-      background-color #000
+      margin-right 20px
+      width 44px
+      height 44px
+      float left
   >>> .el-drawer:focus
     outline none !important
   >>> .el-drawer.rtl

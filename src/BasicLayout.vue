@@ -2,7 +2,9 @@
   <!-- <ConfigProvider :i18nRender="i18nRender" :contentWidth="props.contentWidth" :breadcrumbRender="breadcrumbRender"> -->
   <ConfigProvider>
     <ContainerQuery>
-      <Layout><slot></slot></Layout>
+      <SettingDrawer>
+        <Layout><slot></slot></Layout>
+      </SettingDrawer>
     </ContainerQuery>
   </ConfigProvider>
 </template>
@@ -10,11 +12,13 @@
 <script>
 import ContainerQuery from './components/ContainerQuery'
 import ConfigProvider from './components/ConfigProvider'
+import SettingDrawer from './components/SettingDrawer'
 import Layout from './components/Layout'
 export default {
   components: {
     ContainerQuery,
     ConfigProvider,
+    SettingDrawer,
     Layout
   },
   provide () {
@@ -39,9 +43,6 @@ export default {
   computed: {
   },
   mounted () {
-    console.log(111, this)
-    localStorage.setItem('themeColor', '#1890ff')
-    localStorage.setItem('navMode', 'side')
   }
 }
 </script>

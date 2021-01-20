@@ -24,6 +24,7 @@ export default {
   provide () {
     return {
       menus: this.menus,
+      isMobile: this.$attrs.isMobile,
       slots: this.$slots,
       settings: this.$attrs.settings
     }

@@ -14,6 +14,7 @@
     <template v-slot:left>
       <div>
         <i class="el-icon-refresh-left" style="cursor: pointer;font-size: 30px;line-height: 64px"></i>
+        <i class="el-icon-close" style="cursor: pointer;font-size: 30px;line-height: 64px"></i>
       </div>
     </template>
     <template v-slot:right>

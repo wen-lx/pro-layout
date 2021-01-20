@@ -202,4 +202,4 @@ export default [
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://github.com/wen-lx/pro-layout).
+See [example](https://github.com/wen-lx/pro-layout).

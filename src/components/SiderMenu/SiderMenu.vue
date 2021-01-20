@@ -11,17 +11,15 @@
         <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? settings.themeColor : settings.primaryColor}">{{item.meta.title}}</span>
       </el-menu-item>
     </el-submenu>
-    <div id="fold">
-      <i style="font-size: 30px;cursor: pointer" @click="changeIsCollapse"
-        :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"></i>
-    </div>
+    <!-- <i style="font-size: 30px;cursor: pointer;" @click="changeIsCollapse" id="btn-menu" :style="{left: isCollapse ? '60px' : '200px'}"
+      :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"></i> -->
   </el-menu>
 </template>
 
 <script>
 export default {
-  props: ['logo'],
-  inject: ['menus', 'slots', 'settings'],
+  props: ['logo', 'isCollapse'],
+  inject: ['menus', 'isMobile', 'slots', 'settings'],
   data () {
     return {
       isCollapse: false
@@ -30,6 +28,8 @@ export default {
   watch: {
     logo () {
       this.$slots.logo = this.slots.logo[0]
+    },
+    isCollapse () {
     }
   },
   created () {
@@ -44,6 +44,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+#btn-menu
+  position fixed
+  top 0
+  left 200px
+  line-height 64px
+  padding-left 20px
+  color #111
+  z-index 100
+  // transition all 0.0001s ease
 .sideMenu
   height 100%
   color #fff
@@ -73,10 +82,4 @@ export default {
     width 100%
     height 64px
     overflow hidden
-  #fold
-    position absolute
-    bottom 0
-    width 100%
-    text-align center
-    padding-bottom 20px
 </style>

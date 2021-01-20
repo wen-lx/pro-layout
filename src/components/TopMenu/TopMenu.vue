@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.menus-wrap
+  user-select none // 不可选中文本
 .el-menu-item
   padding 0
   padding-left 0 !important
@@ -61,6 +63,7 @@ export default {
   .menuitemwrap
     width 100%
     padding-left 10px
+    user-select none // 不可选中文本
 .top-menu
   position fixed
   z-index 100

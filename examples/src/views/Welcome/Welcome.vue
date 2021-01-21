@@ -1,6 +1,6 @@
 <template>
   <div>
-    welcome
+    <h1 style="text-align: center;line-height: 600px">welcome</h1>
   </div>
 </template>
 

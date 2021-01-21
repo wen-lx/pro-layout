@@ -26,7 +26,9 @@ export default {
       menus: this.menus,
       isMobile: this.$attrs.isMobile,
       slots: this.$slots,
-      settings: this.$attrs.settings
+      settings: this.$attrs.settings,
+      mediaQuery:  this.$attrs.mediaQuery,
+      handleMediaQuery:  this.$attrs.handleMediaQuery
     }
   },
   data () {

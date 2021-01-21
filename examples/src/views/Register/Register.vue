@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="padding: 200px">member manage</h1>
+    register
   </div>
 </template>
 

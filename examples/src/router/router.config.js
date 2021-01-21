@@ -12,6 +12,12 @@ const contantRoutes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login/Login.vue')
+  },
+  // 注册路由
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/Register/Register.vue')
   }
 ]
 const asyncRoutes =  [

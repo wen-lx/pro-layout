@@ -12,6 +12,9 @@ export default {
       // contentWidth,
       // breadcrumbRender
     }
+  },
+  mounted () {
+    console.log(123, this)
   }
 }
 </script>

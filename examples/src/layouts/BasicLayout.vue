@@ -78,6 +78,11 @@ export default {
   },
   methods: {
     handleMediaQuery (val) {
+      if (!this.isMobile && val['screen-xs']) {
+        this.isMobile = true
+      } else if (this.isMobile && !val['screen-xs']) {
+        this.isMobile = false
+      }
     },
     handleCollapse (val) {
       this.collapsed = val

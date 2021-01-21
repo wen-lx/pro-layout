@@ -5,7 +5,7 @@ const contantRoutes = [
   // 根路由
   {
     path: '/',
-    redirect: '/login'
+    component: () => import('@/views/Dashboard/Dashboard.vue')
   },
   // 登录路由
   {
@@ -118,7 +118,7 @@ const asyncRoutes =  [
   // 匹配不到，展示404
   {
     path: '/*',
-    name: 'Exception',
+    name: 'exception',
     meta: { isAdmin: 'admin' },
     component: () => import('@/views/Exception/Exception.vue')
   }

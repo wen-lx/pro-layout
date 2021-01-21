@@ -1,7 +1,7 @@
 import BasicLayout from '../layouts/BasicLayout.vue'
 import i18n from '@/i18n/index' // 引入多语言
 
-export default [
+const contantRoutes = [
   // 根路由
   {
     path: '/',
@@ -12,11 +12,12 @@ export default [
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login/Login.vue')
-  },
+  }
+]
+const asyncRoutes =  [
   // 欢迎页
   {
     path: '/welcome',
-    redirect: '/welcome',
     component: BasicLayout,
     children: [
       {
@@ -116,3 +117,8 @@ export default [
     component: () => import('@/views/Exception/Exception.vue')
   }
 ]
+
+export {
+  contantRoutes,
+  asyncRoutes
+}

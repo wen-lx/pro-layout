@@ -44,11 +44,11 @@ yarn add vue-pro-layout
 
 <script>
 // import { i18nRender } from '../locales'
-import menus from '../router/router.config'
+import { asyncRoutes } from '../router/router.config'
 export default {
   data () {
     return {
-      menus: menus,
+      menus: asyncRoutes,
       collapsed: false,
       mediaQuery: {},
       isMobile: false,

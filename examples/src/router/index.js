@@ -1,12 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import routes from './router.config'
+import { contantRoutes } from './router.config'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter({
+const createRouter = () => new VueRouter({
   mode: 'hash',
-  routes
+  routes: contantRoutes
 })
+
+const router = createRouter()
+
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher
+}
 
 export default router

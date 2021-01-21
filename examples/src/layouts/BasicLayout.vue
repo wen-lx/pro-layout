@@ -28,11 +28,11 @@
 
 <script>
 // import { i18nRender } from '../locales'
-import menus from '../router/router.config'
+import { asyncRoutes } from '../router/router.config'
 export default {
   data () {
     return {
-      menus: menus,
+      menus: asyncRoutes,
       collapsed: false,
       mediaQuery: {},
       isMobile: false,
@@ -43,6 +43,12 @@ export default {
         isShow: true
       }
     }
+  },
+  computed: {
+    // ...mapState({
+    //   // 动态主路由
+    //   mainMenu: state => state.permission.addRouters
+    // })
   },
   mounted () {
   },

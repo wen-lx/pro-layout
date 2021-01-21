@@ -22,7 +22,6 @@ export default {
   inject: ['menus', 'isMobile', 'slots', 'settings'],
   data () {
     return {
-      isCollapse: false
     }
   },
   watch: {
@@ -59,7 +58,7 @@ export default {
   border-right none
   box-shadow 2px 0 6px rgba(0, 21, 41, 0.05)
   user-select none // 不可选中文本
-  // transition 0s opacity ease
+  // transition 0.6s width ease
   &:not(.el-menu--collapse)
     width 210px
   .el-menu-item

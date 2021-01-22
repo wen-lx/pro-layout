@@ -2,10 +2,15 @@
   "name": "vue-pro-layout",
   "version": "0.1.5",
   "main": "src/index.js",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/wen-lx/pro-layout"
   },
+  "author": "Pan <panfree23@gmail.com>",
+  "contributors": [
+    "wenlx <wenlx1025@163.com>"
+  ],
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "serve": "vue-cli-service serve",

@@ -23,7 +23,7 @@ export default {
   },
   provide () {
     return {
-      menus: this.menus,
+      menus: this.$attrs.menus,
       isMobile: this.$attrs.isMobile,
       slots: this.$slots,
       settings: this.$attrs.settings,
@@ -33,19 +33,12 @@ export default {
   },
   data () {
     return {
-      menus: this.$attrs.menus.filter(item => {
-        if (item.meta && item.meta.prolayout) {
-          item.children = item.children.filter(ite => {
-            return ite.meta.menu
-          })
-          return item
-        }
-      })
     }
   },
   computed: {
   },
   mounted () {
+    console.log(666, this.$el)
   }
 }
 </script>

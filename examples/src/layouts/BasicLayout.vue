@@ -33,7 +33,7 @@ import { asyncRoutes } from '../router/router.config'
 export default {
   data () {
     return {
-      menus: asyncRoutes,
+      menus: asyncRoutes.filter(item => item.meta.menu !== false),
       collapsed: false,
       mediaQuery: {
         'screen-xs': {

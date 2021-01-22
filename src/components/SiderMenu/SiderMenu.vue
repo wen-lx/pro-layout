@@ -4,11 +4,11 @@
     <div class="logo"><slot name="logo"></slot></div>
     <el-submenu v-for="(menu, index) in menus" :key="index" :index="menu.path">
       <template slot="title">
-        <i :class="menu.meta.iconClass"></i>
-        <span slot="title">{{menu.meta.title}}</span>
+        <i :class="menu.meta && menu.meta.iconClass"></i>
+        <span slot="title">{{menu.meta && menu.meta.title}}</span>
       </template>
       <el-menu-item v-for="(item, index) in menu.children" :key="index" :index="item.path">
-        <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? settings.themeColor : settings.primaryColor}">{{item.meta.title}}</span>
+        <span class="menuitemwrap" :style="{backgroundColor: $route.path === item.path ? settings.themeColor : settings.primaryColor}">{{item.meta && item.meta.title}}</span>
       </el-menu-item>
     </el-submenu>
     <!-- <i style="font-size: 30px;cursor: pointer;" @click="changeIsCollapse" id="btn-menu" :style="{left: isCollapse ? '60px' : '200px'}"
@@ -33,6 +33,9 @@ export default {
   },
   created () {
     this.$slots.logo = this.slots.logo[0]
+  },
+  mounted () {
+    console.log(777, this.$el)
   },
   methods: {
     changeIsCollapse () {

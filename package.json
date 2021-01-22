@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "serve": "vue-cli-service serve",
-    "test:ci": "cd examples && npm run serve"
+    "test": "cd examples && npm run serve"
   },
   "dependencies": {
     "core-js": "^3.6.5",

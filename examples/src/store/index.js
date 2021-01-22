@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import getters from './getters'
 import { asyncRoutes } from '@/router/router.config'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   // modules,
-  // getters,
+  getters,
   state: {
     asyncRoutes: []
   },
@@ -16,10 +17,10 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    GenerateRoutes ({state}, role) {
-      setTimeout(function() {
-        state.asyncRoutes = asyncRoutes
-      }, 500)
+    generateRoutes ({commit}, role) {
+      if (role === 'admin') {
+        commit('ASYNC_ROUTES')
+      }
     }
   }
 })

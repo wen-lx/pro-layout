@@ -2,11 +2,6 @@
   "name": "vue-pro-layout",
   "version": "0.1.5",
   "main": "src/index.js",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wen-lx/pro-layout"
-  },
   "author": "wenlx <wenlx1025@163.com>",
   "contributors": [
     "wenlx <wenlx1025@163.com>"
@@ -57,8 +52,19 @@
     "last 2 versions",
     "not dead"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wen-lx/pro-layout"
+  },
   "bugs": {
     "url": "https://github.com/wen-lx/pro-layout/issues"
   },
+  "keywords": [
+    "vue",
+    "element-ui",
+    "pro-layout",
+    "mobile"
+  ],
   "description": "element-ui-vue-pro layout, easy to use pro scaffolding."
 }

@@ -6,7 +6,6 @@
 export default {
   // props: ['i18nRender'],
   provide () {
-    const that = this
     return {
       // i18nRender: that.i18nRender
       // contentWidth,

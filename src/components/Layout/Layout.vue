@@ -18,13 +18,12 @@
 </template>
 
 <script>
-import SiderMenu, { MobileMenu } from '../SiderMenu'
+import SiderMenu from '../SiderMenu'
 import TopMenu from '../TopMenu'
 export default {
   inject: ['menus', 'isMobile', 'slots', 'settings'],
   components: {
     SiderMenu,
-    MobileMenu,
     TopMenu
   },
   data() {
@@ -56,10 +55,6 @@ export default {
     // consle.log()
   },
   methods: {
-    changeThemeColor (color) {
-    },
-    changeNavMode (mode) {
-    },
     changeIsCollapse () {
       this.isCollapse = !this.isCollapse
     }

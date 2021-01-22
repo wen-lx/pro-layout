@@ -15,6 +15,7 @@ export default {
     // components.forEach(component => {
     //   Vue.component(component.name, component)
     // })
+    console.log(options)
     Vue.prototype.loading = Loading
   }
 }

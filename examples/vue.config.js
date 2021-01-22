@@ -13,8 +13,8 @@ const vueConfig = {
     port: 8898,
     open: true
   },
-  productionSourceMap: false,
-  lintOnSave: false
+  productionSourceMap: false
+  // lintOnSave: false
 }
 
 module.exports =  vueConfig

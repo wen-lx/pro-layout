@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/wen-lx/pro-layout"
   },
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "test:ci": "npm run lint"
+  },
   "dependencies": {
     "core-js": "^3.6.5",
     "nprogress": "^0.2.0",
@@ -47,5 +51,8 @@
     "last 2 versions",
     "not dead"
   ],
+  "bugs": {
+    "url": "https://github.com/wen-lx/pro-layout/issues"
+  },
   "description": "element-ui-vue-pro layout, easy to use pro scaffolding."
 }
